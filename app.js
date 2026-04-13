@@ -14,13 +14,17 @@
 // fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
 //   .then(res => res.json())
 //   .then(data => {
-//     data.results.forEach(pokemon => {
+    //     data.results.forEach(pokemon => {
 //         console.log(pokemon.name);
 //     });
 //   });
 // }
 
 
+const input = document.getElementById("input-busqueda-pokemon")
+const btn = document.getElementById("btn-busqueda")
+const lista = document.getElementById("pokemon-list")
+const btnVolver = document.getElementById("btn-volver");
 
 // console.log(pruebaAPInombre);
 function llamarPokeAPI(){
@@ -60,3 +64,52 @@ function llamarPokemon(pokemons) {
       });
   });
 }
+btn.addEventListener("click", buscarPokemon)
+
+function buscarPokemon() {
+  const nombre = input.value.toLowerCase().trim();
+
+  if (!nombre) return;
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("No encontrado");
+      }
+      return res.json();
+    })
+    .then(data => {
+      renderPokemonUnico(data);
+    })
+    .catch(error => {
+      alert("Pokémon no encontrado 😢");
+      console.error(error);
+    });
+}
+
+function renderPokemonUnico(data) {
+  lista.innerHTML = "";
+
+  const col = document.createElement("div");
+  col.className = "col-12 col-md-4 mx-auto";
+
+  col.innerHTML = `
+    <div class="card text-center">
+      <img src="${data.sprites.front_default}" class="card-img-top mx-auto" style="width:120px;">
+      <div class="card-body">
+        <h5 class="text-capitalize">${data.name}</h5>
+        <p>Peso: ${data.weight}</p>
+      </div>
+    </div>
+  `;
+
+  lista.appendChild(col);
+}
+
+btnVolver.addEventListener("click", () => {
+    input.value = "";
+    llamarPokeAPI();
+});
+
+
+
