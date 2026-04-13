@@ -19,9 +19,9 @@
 //     });
 //   });
 // }
+
 // console.log(pruebaAPInombre);
 function llamarPokeAPI(){
-const lista = document.getElementById("pokemon-list");
 fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
   .then(res => res.json())
   .then(data => {
@@ -29,3 +29,6 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
   })
   .catch(error => console.error(error));
 }
+llamarPokeAPI()
+
+
