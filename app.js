@@ -20,16 +20,41 @@
 //   });
 // }
 
+
+
 // console.log(pruebaAPInombre);
 function llamarPokeAPI(){
 fetch("https://pokeapi.co/api/v2/pokemon?limit=20")
   .then(res => res.json())
   .then(data => {
-    console.log(data);
+    console.log(data.results);
+    llamarPokemon(data.results);
   })
   .catch(error => console.error(error));
 }
 llamarPokeAPI()
 
+function llamarPokemon(pokemons) {
+    const lista = document.getElementById("pokemon-list");
+    console.log(lista);
+    
+    
+    lista.innerHTML = "";
 
+     pokemons.forEach(pokemon => {
+    fetch(pokemon.url)
+      .then(res => res.json())
+      .then(data => {
+        const div = document.createElement("div");
 
+        div.innerHTML = `
+          <h3>${data.name}</h3>
+          <img src="${data.sprites.front_default}" />
+          <p>Altura: ${data.height}</p>
+          <p>Peso: ${data.weight}</p>
+        `;
+
+        lista.appendChild(div);
+      });
+  });
+}
