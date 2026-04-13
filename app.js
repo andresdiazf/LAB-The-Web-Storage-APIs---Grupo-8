@@ -50,14 +50,14 @@ function llamarPokemon(pokemons) {
       .then(res => res.json())
       .then(data => {
         const div = document.createElement("div");
+      div.className = "card border border-danger border-3"; 
+      div.style.width = "18rem";
 
         div.innerHTML = `
-         <div class="card" style="width: 18rem;">
-            <img src="${data.sprites.front_default}" class="card-img-top" alt="${data.name}">
+            <img src="${data.sprites.front_default}" class="card-img-top my-0 mx-auto" alt="${data.name}">
             <div class="card-body">
-              <p class="card-text text-capitalize">${data.name}</p>
+              <p class="card-text text-capitalize fs-3">${data.name}</p>
             </div>
-          </div>
         `;
 
         lista.appendChild(div);
@@ -94,8 +94,8 @@ function renderPokemonUnico(data) {
   col.className = "col-12 col-md-4 mx-auto";
 
   col.innerHTML = `
-    <div class="card text-center">
-      <img src="${data.sprites.front_default}" class="card-img-top mx-auto" style="width:120px;">
+    <div class="card text-center border border-danger border-3">
+      <img src="${data.sprites.front_default}" class="card-img-top mx-auto">
       <div class="card-body">
         <h5 class="text-capitalize">${data.name}</h5>
         <p>Peso: ${data.weight}</p>
