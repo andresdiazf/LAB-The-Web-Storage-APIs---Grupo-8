@@ -48,10 +48,12 @@ function llamarPokemon(pokemons) {
         const div = document.createElement("div");
 
         div.innerHTML = `
-          <h3>${data.name}</h3>
-          <img src="${data.sprites.front_default}" />
-          <p>Altura: ${data.height}</p>
-          <p>Peso: ${data.weight}</p>
+         <div class="card" style="width: 18rem;">
+            <img src="${data.sprites.front_default}" class="card-img-top" alt="${data.name}">
+            <div class="card-body">
+              <p class="card-text text-capitalize">${data.name}</p>
+            </div>
+          </div>
         `;
 
         lista.appendChild(div);
