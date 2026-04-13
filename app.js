@@ -54,7 +54,7 @@ function llamarPokemon(pokemons) {
       div.style.width = "18rem";
 
         div.innerHTML = `
-            <img src="${data.sprites.front_default}" class="card-img-top my-0 mx-auto" alt="${data.name}">
+            <img src="${data.sprites.front_default}" class="card-img-top my-0 mx-auto w-75" alt="${data.name}">
             <div class="card-body">
               <p class="card-text text-capitalize fs-3">${data.name}</p>
             </div>
@@ -95,7 +95,7 @@ function renderPokemonUnico(data) {
 
   col.innerHTML = `
     <div class="card text-center border border-danger border-3">
-      <img src="${data.sprites.front_default}" class="card-img-top mx-auto">
+      <img src="${data.sprites.front_default}" class="card-img-top mx-auto w-75">
       <div class="card-body">
         <h5 class="text-capitalize">${data.name}</h5>
         <p>Peso: ${data.weight}</p>
