@@ -41,10 +41,20 @@ function llamarPokemon(pokemons) {
     
     lista.innerHTML = "";
 
-
-    pokemons.forEach(pokemon => {
+     pokemons.forEach(pokemon => {
+    fetch(pokemon.url)
+      .then(res => res.json())
+      .then(data => {
         const div = document.createElement("div");
-        div.innerHTML = `<p>${pokemon.name}</p>`;
-        lista.appendChild(div)
-    });
+
+        div.innerHTML = `
+          <h3>${data.name}</h3>
+          <img src="${data.sprites.front_default}" />
+          <p>Altura: ${data.height}</p>
+          <p>Peso: ${data.weight}</p>
+        `;
+
+        lista.appendChild(div);
+      });
+  });
 }
