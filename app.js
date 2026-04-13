@@ -25,6 +25,7 @@ const input = document.getElementById("input-busqueda-pokemon")
 const btn = document.getElementById("btn-busqueda")
 const lista = document.getElementById("pokemon-list")
 const btnVolver = document.getElementById("btn-volver");
+const resultadoBusqueda = document.getElementById("resultado");
 
 // console.log(pruebaAPInombre);
 function llamarPokeAPI(){
@@ -88,7 +89,7 @@ function buscarPokemon() {
 }
 
 function renderPokemonUnico(data) {
-  lista.innerHTML = "";
+  resultadoBusqueda.innerHTML = "";
 
   const col = document.createElement("div");
   col.className = "col-12 col-md-4 mx-auto";
@@ -103,7 +104,7 @@ function renderPokemonUnico(data) {
     </div>
   `;
 
-  lista.appendChild(col);
+  resultadoBusqueda.appendChild(col);
 }
 
 btnVolver.addEventListener("click", () => {
