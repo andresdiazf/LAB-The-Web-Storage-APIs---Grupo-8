@@ -48,3 +48,4 @@ function llamarPokemon(pokemons) {
         lista.appendChild(div)
     });
 }
+
