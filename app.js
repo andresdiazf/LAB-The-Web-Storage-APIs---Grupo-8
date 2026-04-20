@@ -42,7 +42,6 @@ function llamarPokemon(pokemons) {
     const lista = document.getElementById("pokemon-list");
     console.log(lista);
     
-    
     lista.innerHTML = "";
 
      pokemons.forEach(pokemon => {
@@ -87,8 +86,6 @@ function buscarPokemon() {
     });
 }
 
-<<<<<<< HEAD
-=======
 function renderPokemonUnico(data) {
   lista.innerHTML = "";
 
@@ -115,4 +112,3 @@ btnVolver.addEventListener("click", () => {
 
 
 
->>>>>>> 84151e89672b439574f9ddf93935e4fcda38550a
